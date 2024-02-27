@@ -1,0 +1,2 @@
+progress_bar:
+  _target_: src.callbacks.progress_bar.CustomRichProgressBar

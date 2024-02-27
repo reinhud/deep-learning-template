@@ -1,0 +1,4 @@
+lr_monitor:
+  _target_: lightning.pytorch.callbacks.LearningRateMonitor
+  logging_interval: null # set to "step" to log lr at each step, "epoch" to log only at the end of each epoch, None to not log according to interval of lr_scheduler
+  log_momentum: False

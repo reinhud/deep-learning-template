@@ -1,0 +1,52 @@
+# @package _global_
+
+# specify here default configuration
+# order of defaults determines the order in which configs override each other
+defaults:
+  - paths: default
+  - dataset: cifar10
+  - model: resnet18
+  - callbacks: default
+  - loggers: default
+  - trainer: default
+  - extras: default
+  - hydra: default
+  - _self_
+
+  # experiment configs allow for version control of specific hyperparameters
+  # e.g. best hyperparameters for given model and datamodule
+  - experiment: null
+
+  # config for hyperparameter optimization
+  - hparams_search: null
+
+  # optional local config for machine/user specific settings
+  # it's optional since it doesn't need to exist and is excluded from version control
+  - optional local: default
+
+  # debugging config (enable through command line, e.g. `python train.py debug=default)
+  - debug: null
+
+# specify metrics to optimize for
+# 🚨 This metric should be tracked in your LightningModule's and be adjusted depending the task
+# this is used by the ModelCheckpoint and EarlyStopping callbacks to determine the best model
+optimized_metric: "val_accuracy" # e.g. "val_loss"
+optimized_metric_mode: "max" # "max" or "min"
+
+# task name, determines output directory path
+task_name: "train"
+
+# tags to help you identify your experiments
+# you can overwrite this in experiment configs
+# overwrite from command line with `python train.py tags="[first_tag, second_tag]"`
+tags: ["dev"]
+
+# set False to skip model training
+train: True
+
+# evaluate on test set, using best model weights achieved during training
+# lightning chooses best weights based on the metric specified in checkpoint callback
+test: True
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: 42

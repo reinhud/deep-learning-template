@@ -1,0 +1,25 @@
+# 🚨Hydra runtime variables are not available during the collection, as they are not yet build
+# This means all forms of accessing the hydra config at runtime like ${hydra:hydra.runtime.cwd} fail
+
+# path to root directory
+# this requires PROJECT_ROOT environment variable to exist
+# you can replace it with "." if you want the root to be the current working directory
+# root_dir: ${oc.env:PROJECT_ROOT}
+root_dir: "."
+
+# path to data directory
+data_dir: ${paths.root_dir}/data
+
+# path to output directory, created dynamically by hydra
+# path generation pattern is specified in `configs/hydra/default.yaml`
+# use it to store all files generated during the run, like ckpts and metrics
+output_path: ${paths.root_dir}/output
+
+# path to dir where logs are stored
+log_path: ${paths.output_path}/logs
+
+# path for model checkpoints
+ckpt_path: ${paths.output_path}/checkpoints
+
+# path for experiment outputs for dvc, they are deleted by default after run
+dvclive_path: ${paths.output_path}/.dvclive

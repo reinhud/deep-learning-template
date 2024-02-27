@@ -1,0 +1,6 @@
+dvc_logger:
+  _target_: dvclive.lightning.DVCLiveLogger
+  log_model: false
+  dir: ${paths.dvclive_path}
+  dvcyaml: null # dvc.yaml to write to, if None, dont update dvc.yaml
+  report: html # automatically generate html report

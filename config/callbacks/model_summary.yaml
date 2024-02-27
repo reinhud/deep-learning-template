@@ -1,0 +1,2 @@
+model_summary:
+  _target_: src.callbacks.model_summary.CustomRichModelSummary

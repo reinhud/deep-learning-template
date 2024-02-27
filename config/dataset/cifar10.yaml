@@ -1,0 +1,7 @@
+_target_: src.datasets.cifar10.CIFAR10DataModule
+batch_size: 64
+data_dir: ${paths.data_dir}/cifar10
+train_ratio: 0.8
+seed: ${seed}
+num_workers: null
+pin_memory: true

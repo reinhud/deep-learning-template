@@ -1,0 +1,7 @@
+csv_logger:
+    _target_: lightning.pytorch.loggers.CSVLogger
+    save_dir: ${paths.logs_path} # Specify the save directory
+    name: my_exp_name # Experiment name (optional, defaults to 'lightning_logs')
+    version: null # Experiment version (optional, defaults to None)
+    prefix: "" # Prefix for metric keys (optional, defaults to empty string)
+    flush_logs_every_n_steps: 100 # How often to flush logs to disk (optional, defaults to 100)

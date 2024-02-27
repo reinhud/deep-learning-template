@@ -1,0 +1,50 @@
+_target_: lightning.pytorch.trainer.Trainer
+# Dir to save checkpoints and logs
+default_root_dir: ${paths.output_path}/.lightning
+
+# ===== Training Loop and Epoch Configuration ===== #
+min_epochs: null # Minimum number of epochs to run, overrides early stopping
+max_epochs: 15 # Maximum number of epochs to run
+
+# ===== Hardware and Acceleration Settings ===== #
+accelerator: auto # Type of accelerator (GPU, TPU, etc.) - auto selects the best available
+strategy: auto # Training strategy like DP, DDP - auto selects based on environment
+devices: auto # Number of devices to train on (GPUs, TPUs) - auto selects all available
+
+precision: 16-mixed # Mixed precision for faster training, uses 16-bit and 32-bit floats
+
+# ===== Validation and Checkpointing Settings ===== #
+check_val_every_n_epoch: 1 # Perform validation every N epochs
+enable_checkpointing: true # Enable model checkpointing
+
+# ===== Reproducibility and Determinism ===== #
+deterministic: False # Ensures deterministic results at the cost of performance
+
+# ===== Training Batching and Gradient Settings ===== #
+max_steps: -1 # Maximum number of steps (batches) to train, -1 for no limit
+limit_train_batches: null # Limits the number of training batches per epoch
+accumulate_grad_batches: 5 # Number of batches to accumulate before performing a backward/update pass
+gradient_clip_val: 0.9 # Value for gradient clipping
+gradient_clip_algorithm: value # Algorithm for gradient clipping, 'norm' or 'value'
+
+# ===== Model Evaluation and Sanity Checks ===== #
+num_sanity_val_steps: 2 # Number of validation steps to run before actual training for sanity checks
+val_check_interval: null # Interval for checking validation loss
+
+# ===== Performance Optimization Settings ===== #
+log_every_n_steps: 50 # Log metrics every N steps
+benchmark: null # Enables cudnn.benchmark mode for faster training with fixed input size
+inference_mode: true # Enables inference mode for memory optimization during evaluation
+
+# ===== Distributed and Parallel Training Settings ===== #
+use_distributed_sampler: true # Use distributed data sampler for distributed training
+sync_batchnorm: false # Synchronize batch norm layers across all GPUs/TPUs
+
+# ===== Miscellaneous Settings ===== #
+enable_progress_bar: true # Enable the progress bar during training
+enable_model_summary: true # Enable model summary at the start of training
+profiler: null # Profiler to use, 'simple' for basic GPU profiling
+detect_anomaly: false # Enable anomaly detection for debugging
+barebones: false # Minimize trainer verbosity for less clutter
+plugins: null # Custom plugins for advanced behaviors
+reload_dataloaders_every_n_epochs: 0 # Reload dataloaders every N epochs

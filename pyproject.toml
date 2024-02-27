@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "pytorch_template"
+version = "0.1.0"
+description = "Project Template for Deeplearning with Pytorch"
+authors = ["reinhud"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10.13"
+torch = { version = "2.1.0+cu118", source = "pytorch" }
+torchvision = { version = "^0.16.0+cu118", source = "pytorch" }
+colorlog = "^6.8.0"
+dvc = "^3.36.1"
+dvclive = "^3.5.1"
+lightning = "^2.1.3"
+rich = "^13.7.0"
+jsonargparse = {extras = ["signatures"], version = "^4.27.1"}
+hydra-core = "^1.3.2"
+hydra-colorlog = "^1.2.0"
+sh = "^2.0.6"
+matplotlib = "^3.8.3"
+ipykernel = "^6.29.2"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+black = "^23.11.0"
+isort = "^5.13.2"
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+pre-commit = "^3.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "explicit"
+
+[tool.black]
+line-length = 110
+
+[tool.isort]
+profile = "black"
+
+[tool.flake8]
+max-line-length = 110
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
+filterwarnings = ["ignore::DeprecationWarning"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "serial",
+]
