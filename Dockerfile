@@ -63,8 +63,7 @@ RUN echo "Base image built successfully"
 FROM base AS deps
 
 # Used to initialize dependencies.
-#COPY poetry.lock pyproject.toml ./
-COPY pyproject.toml ./
+COPY poetry.lock pyproject.toml ./
 
 # Install runtime dependencies to VIRTUAL_ENV.
 RUN --mount=type=cache,target=/root/.cache \
@@ -85,8 +84,8 @@ ENV ENVIRONMENT="development"
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 # Used to initialize dependencies.
-# COPY poetry.lock pyproject.toml ./
-COPY pyproject.toml ./
+COPY poetry.lock pyproject.toml ./
+
 
 # Quicker install as runtime dependencies are already installed.
 RUN --mount=type=cache,target=/root/.cache \

@@ -56,7 +56,7 @@ class CIFAR10DataModule(L.LightningDataModule):
 
     def setup(self, stage: str = None) -> None:
         """Apply transforms and plits the dataset."""
-        # transforms
+        # Transforms
         transform_train = transforms.Compose(
             [
                 transforms.RandomCrop(32, padding=4),
@@ -73,7 +73,7 @@ class CIFAR10DataModule(L.LightningDataModule):
             ]
         )
 
-        # split dataset
+        # Split dataset
         if stage == "fit" or stage is None:
             cifar10_full = CIFAR10(self.data_dir, train=True, transform=transform_train)
             train_size = int(50000 * self.train_ratio)
