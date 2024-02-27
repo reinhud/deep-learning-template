@@ -4,7 +4,7 @@
 #========= Base Image =========#
 #==============================================================================#
 # Use slim, up-to-date, and official LTS version as base.
-ARG PYTHON_VERSION=3.10.13
+ARG PYTHON_VERSION=3.12.2
 FROM python:${PYTHON_VERSION}-slim-bookworm as base
 
 # Set environment variables for Python, pip, and Poetry.
@@ -17,7 +17,7 @@ ENV PYTHONUNBUFFERED=1 \
     \
     # Poetry configuration
     # Official Poetry documentation: https://python-poetry.org/docs/configuration/#using-environment-variables
-    POETRY_VERSION=1.6.1 \
+    POETRY_VERSION=1.8.1 \
     # Make Poetry install to this location
     POETRY_HOME="/opt/poetry" \
     # Do not ask any interactive question
