@@ -12,11 +12,16 @@ from tests.pytest_helpers.run_if import RunIf
 class TestTrain:
     """Tests the training script train.py."""
 
-    def test_train_fast_dev_run(self, cfg_train: DictConfig) -> None:
+    def test_train_fast_dev_run(self, cfg_train: DictConfig, mocker) -> None:
         """Run for 1 train, val, and test step.
 
         :param cfg_train: A DictConfig containing a valid training configuration.
         """
+        merge_test_metrics_mock = mocker.patch(
+            "src.utils.training_helpers.merge_test_metrics.merge_test_metrics"
+        )
+        merge_test_metrics_mock.return_value = None
+
         HydraConfig().set_config(cfg_train)
 
         with open_dict(cfg_train):

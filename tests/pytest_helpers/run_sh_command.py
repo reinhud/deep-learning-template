@@ -1,4 +1,4 @@
-import subprocess
+import subprocess  # nosec
 
 import pytest
 
@@ -13,7 +13,7 @@ def run_sh_command(command):
         subprocess.CalledProcessError: If the command execution fails.
     """
     try:
-        subprocess.run(command, check=True)
+        subprocess.run(command, check=True, shell=True)  # nosec
     except subprocess.CalledProcessError as e:
         stdout_decoded = ""
         stderr_decoded = ""

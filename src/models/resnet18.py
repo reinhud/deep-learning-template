@@ -20,14 +20,16 @@ class LResNet18(L.LightningModule):
         self,
         optimizer: torch.optim.Optimizer,
         scheduler: torch.optim.lr_scheduler,
-        # TODO: make this dynamic
         output_path: str,  # Path to save the model checkpoints
+        # TODO: make this dynamic
         num_target_classes: int = 10,
     ):
         super().__init__()
 
-        self.num_target_classes = num_target_classes
+        self.optimizer = optimizer
+        self.scheduler = scheduler
         self.output_path = output_path
+        self.num_target_classes = num_target_classes
 
         # Log hyperparameters
         self.save_hyperparameters()
@@ -223,44 +225,22 @@ class LResNet18(L.LightningModule):
         :return: A dict containing the configured optimizers and learning-rate schedulers
                 to be used for training.
         """
-        optimizer = self.hparams.optimizer(params=self.trainer.model.parameters())
-        if self.hparams.scheduler is not None:
-            scheduler = self.hparams.scheduler(optimizer=optimizer)
+        """Optimizer = self.hparams.optimizer(params=self.trainer.model.parameters()) if
+        self.hparams.scheduler is not None:
+
+        scheduler = self.hparams.scheduler(optimizer=optimizer)     return {         "optimizer":
+        optimizer,         "lr_scheduler": {             "scheduler": scheduler, "monitor":
+        "val_loss",             "interval": "epoch",             "frequency": 1, },     } return
+        {"optimizer": optimizer}
+        """
+
+        if self.scheduler is not None:
             return {
-                "optimizer": optimizer,
+                "optimizer": self.optimizer,
                 "lr_scheduler": {
-                    "scheduler": scheduler,
+                    "scheduler": self.scheduler,
                     "monitor": "val_loss",
                     "interval": "epoch",
                     "frequency": 1,
                 },
             }
-        return {"optimizer": optimizer}
-
-    '''def configure_gradient_clipping(self, optimizer, gradient_clip_val, gradient_clip_algorithm) -> None:
-        """Configure the gradient clipping to control the exploding gradients problem during
-        training. This method adjusts the gradient clipping value after a certain number of epochs.
-
-        Gradient clipping is a technique to prevent the gradients from becoming too large, which can
-        cause training instability. This method is called internally by Lightning during the backward
-        pass to apply gradient clipping.
-
-        :param optimizer: The optimizer for which gradient clipping needs to be configured.
-        :param gradient_clip_val: The value for gradient clipping. If the current epoch is greater than 5,
-                                    this value is doubled to adjust the clipping threshold.
-        :param radient_clip_algorithm: The algorithm to use for gradient clipping,
-                                        e.g., 'norm' for L2 norm clipping.
-
-        Note:
-            - Lightning handles the gradient clipping internally, so this method just configures
-                the parameters for clipping.
-            - The method modifies the gradient clipping value based on the current epoch to adapt
-                the training process dynamically.
-        """
-        if self.current_epoch > 5 and gradient_clip_val:
-            gradient_clip_val = gradient_clip_val * 2
-
-        # Lightning will handle the gradient clipping
-        self.clip_gradients(
-            optimizer, gradient_clip_val=gradient_clip_val, gradient_clip_algorithm=gradient_clip_algorithm
-        )'''

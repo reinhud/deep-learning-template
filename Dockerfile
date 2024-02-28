@@ -35,7 +35,6 @@ ENV PATH="$POETRY_HOME/bin:$VIRTUAL_ENV/bin:$PATH"
 ENV PYTHONPATH="$PROJECT_BASE_PATH:$PYTHONPATH"
 
 # Working directory and Python path.
-# TODO: rename to workspaces
 WORKDIR /workspace
 
 # Install system dependencies.

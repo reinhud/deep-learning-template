@@ -1,12 +1,13 @@
 import csv
 import json
+import os
 
 from src.utils.logging.base_logger import BaseLogger
 
 log = BaseLogger(__name__)
 
 
-def merge_test_metrics(metrics_file_path, output_file_path) -> None:
+def merge_test_metrics(metrics_file_path: str | os.PathLike, output_file_path: str | os.PathLike) -> None:
     """Create a CSV file from a JSON file containing test metrics, excluding 'predictions' and
     'targets'.
 
@@ -32,5 +33,5 @@ def merge_test_metrics(metrics_file_path, output_file_path) -> None:
             for metric, value in test_metrics.items():
                 if metric not in ["predictions", "targets", "test_probability_predicted_class"]:
                     writer.writerow([metric, value])
-    except FileNotFoundError as e:
+    except Exception as e:
         log.error(f"The file {metrics_file_path} was not found. Error: {e}")

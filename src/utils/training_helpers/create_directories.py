@@ -12,6 +12,9 @@ def create_directories(paths: List[str]) -> None:
     :param path_list: A list of paths to create.
     """
     log.info(f"Checking if directories: {paths} exist.")
+    if paths is None:
+        log.error("Received None for paths which is not expected. Check your configuration.")
+        return
     for path in paths:
         if path is not None:
             log.info(f"Creating directory: {path}.")
