@@ -20,6 +20,7 @@ trainer:
   min_epochs: 5
 
 model:
+  num_target_classes: 10
   optimizer:
     lr: 0.002
 

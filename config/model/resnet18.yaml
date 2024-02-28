@@ -1,5 +1,6 @@
 _target_: src.models.resnet18.LResNet18
 output_path: ${paths.dvclive_path}/plots/metrics
+num_target_classes: 10
 
 optimizer:
   _target_: torch.optim.Adam
