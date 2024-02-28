@@ -11,7 +11,7 @@ import torch
 from packaging.version import Version
 from pytest import MarkDecorator
 
-from tests.helpers._package_available import (
+from tests.pytest_helpers._package_available import (
     _DEEPSPEED_AVAILABLE,
     _FAIRSCALE_AVAILABLE,
     _IS_WINDOWS,

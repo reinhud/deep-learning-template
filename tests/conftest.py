@@ -1,13 +1,13 @@
 """This file prepares config fixtures for other tests."""
 
+# TODO: Add tests for util functions
+# TODO: add tests for running dvc experiments
 from pathlib import Path
 
 import pytest
 from hydra import compose, initialize
 from hydra.core.global_hydra import GlobalHydra
 from omegaconf import DictConfig, OmegaConf, open_dict
-
-# sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
 
 @pytest.fixture(scope="package")
@@ -91,6 +91,7 @@ def cfg_train(cfg_train_global: DictConfig, tmp_path: Path, test_logger_config: 
     """
     cfg = cfg_train_global.copy()
 
+    # Update the output, log paths and logger
     with open_dict(cfg):
         cfg.paths.output_path = str(tmp_path)
         cfg.paths.log_path = str(tmp_path)
@@ -116,6 +117,7 @@ def cfg_eval(cfg_eval_global: DictConfig, tmp_path: Path, test_logger_config: Di
     """
     cfg = cfg_eval_global.copy()
 
+    # Update the output, log paths and logger
     with open_dict(cfg):
         cfg.paths.output_path = str(tmp_path)
         cfg.paths.log_path = str(tmp_path)
@@ -124,9 +126,3 @@ def cfg_eval(cfg_eval_global: DictConfig, tmp_path: Path, test_logger_config: Di
     yield cfg
 
     GlobalHydra.instance().clear()
-
-
-@pytest.fixture(scope="function")
-def mock_merge_test_metrics(*args, **kwargs) -> None:
-    """A mock function for merging test metrics."""
-    pass

@@ -20,8 +20,7 @@ class CustomRichProgressBar(RichProgressBar):
     """Customized RichProgressBar callback."""
 
     def __init__(self):
-        """
-        Initialize the CustomRichProgressBar callback.
+        """Initialize the CustomRichProgressBar callback.
 
         Args:
             theme (RichProgressBarTheme): The custom theme for the progress bar.

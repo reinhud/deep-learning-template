@@ -4,10 +4,10 @@
 # python train.py experiment=example
 
 defaults:
-    - override /dataset: cifar10
-    - override /model: resnet18
-    - override /callbacks: default
-    - override /trainer: default
+  - override /dataset: cifar10
+  - override /model: resnet18
+  - override /callbacks: default
+  - override /trainer: default
 
 # all parameters below will be merged with parameters from default configurations set above
 # this allows you to overwrite only specified parameters
@@ -17,11 +17,11 @@ tags: ["cifar10", "resnet18"]
 seed: 12345
 
 trainer:
-    min_epochs: 5
+  min_epochs: 5
 
 model:
-    optimizer:
-        lr: 0.002
+  optimizer:
+    lr: 0.002
 
 data:
-    batch_size: 64
+  batch_size: 64

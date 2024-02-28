@@ -46,33 +46,41 @@ Outputs of the experiment can be found within the /output folder.
 ### Common commands
 
 Debug the experiment pipeline:
+
 ```bash
 dvc exp run -f --set-param "debug=fdr"
 ```
 
 Running multiple experiments:
+
 ```bash
-dvc exp run --queue -S "experiment=A" 
+dvc exp run --queue -S "experiment=A"
 dvc exp run --queue -S "experiment=B"
 
 dvc queue start
 ```
 
 Running all fast tests:
+
 ```
 make test
 ```
+
 Running all the tests, including slow ones:
+
 ```
 make test-full
 ```
 
 ### Testing
+
 While you can still use the tests by involking pytest directly
-for full customizability of the testing runs like 
+for full customizability of the testing runs like
+
 ```
 poetry run pytest tests/test_train.py
 ```
+
 there are make command provided for quick access to the testing suite.
 
 ### Project Structure
@@ -92,5 +100,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Acknowledgments
 
 Inspiration, useful repos, code snippets, etc.:
-* https://github.com/ashleve/lightning-hydra-template
 
+- https://github.com/ashleve/lightning-hydra-template

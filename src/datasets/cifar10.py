@@ -19,8 +19,7 @@ class CIFAR10DataModule(L.LightningDataModule):
         num_workers: int | None = None,
         pin_memory: bool | None = None,
     ):
-        """
-        Initializes the CIFAR10DataModule.
+        """Initializes the CIFAR10DataModule.
 
         Args:
             batch_size (int): The batch size for data loaders.
