@@ -1,0 +1,6 @@
+outs:
+- md5: a8843b88ea063643ba3c092d743c2404.dir
+  size: 186214114
+  nfiles: 8
+  hash: md5
+  path: cifar10
