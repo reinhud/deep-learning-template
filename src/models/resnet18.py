@@ -225,16 +225,12 @@ class LResNet18(L.LightningModule):
         :return: A dict containing the configured optimizers and learning-rate schedulers
                 to be used for training.
         """
-        """Optimizer = self.hparams.optimizer(params=self.trainer.model.parameters()) if
-        self.hparams.scheduler is not None:
+        # Define optimizer
+        self.optimizer = self.optimizer(params=self.trainer.model.parameters())
 
-        scheduler = self.hparams.scheduler(optimizer=optimizer)     return {         "optimizer":
-        optimizer,         "lr_scheduler": {             "scheduler": scheduler, "monitor":
-        "val_loss",             "interval": "epoch",             "frequency": 1, },     } return
-        {"optimizer": optimizer}
-        """
-
+        # Define learning-rate scheduler
         if self.scheduler is not None:
+            self.scheduler = self.scheduler(optimizer=self.optimizer)
             return {
                 "optimizer": self.optimizer,
                 "lr_scheduler": {
@@ -244,3 +240,4 @@ class LResNet18(L.LightningModule):
                     "frequency": 1,
                 },
             }
+        return {"optimizer": self.optimizer}

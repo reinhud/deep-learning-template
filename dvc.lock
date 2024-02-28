@@ -1,0 +1,25 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: poetry run python src/train.py
+    deps:
+    - path: src/datasets
+      hash: md5
+      md5: d83a0944b9485ad773a315d4e1309519.dir
+      size: 14821
+      nfiles: 3
+    - path: src/models
+      hash: md5
+      md5: 9dd0503b628304b8783f089be1e53d3e.dir
+      size: 28590
+      nfiles: 3
+    - path: src/train.py
+      hash: md5
+      md5: 26aded779cdfd173e3bcb630b44b992b
+      size: 5034
+    outs:
+    - path: output/.dvclive
+      hash: md5
+      md5: a7294e729ea526df386dacf3b2d13d99.dir
+      size: 123348
+      nfiles: 27
