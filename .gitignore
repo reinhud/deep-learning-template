@@ -141,6 +141,8 @@ cython_debug/
 
 
 # Outputs
-/output/**
+/output/logs/**
+/output/checkpoints/**
+/output/.dvclive/**
 params.yaml
 /tmp

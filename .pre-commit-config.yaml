@@ -62,7 +62,7 @@ repos:
             "--extend-ignore",
             "E203,E402,E501,F401,F841,RST2,RST301",
             "--exclude",
-            "logs/*,data/*",
+            "output/*,data/*",
           ]
         additional_dependencies: [flake8-rst-docstrings==0.3.0]
 
@@ -78,8 +78,6 @@ repos:
     rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
-        types: [yaml]
-        exclude: "environment.yaml"
 
   # shell scripts linter
   - repo: https://github.com/shellcheck-py/shellcheck-py
@@ -97,8 +95,7 @@ repos:
           - mdformat-gfm
           - mdformat-tables
           - mdformat_frontmatter
-          # - mdformat-toc
-          # - mdformat-black
+          - mdformat-black
 
   # word spelling linter
   - repo: https://github.com/codespell-project/codespell
