@@ -34,7 +34,7 @@ class BaseLogger(logging.Logger):
         if file:
             file_handler = logging.FileHandler(file)
             file_handler.setLevel(level)
-            file_handler.setFormatter(base_logging_formatter)
+            # file_handler.setFormatter(base_logging_formatter)
 
             # aAd file handler to the logger
             self.addHandler(file_handler)

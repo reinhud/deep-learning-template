@@ -7,6 +7,14 @@ stages:
       - src/train.py
     outs:
       - output/.dvclive
+      - output/checkpoints/best_model.ckpt
+
+artifacts:
+  cv-classification:
+    path: output/checkpoints/best_model.ckpt
+    type: model
+    meta:
+      framework: pytorch
 
 params:
   - output/.dvclive/params.yaml

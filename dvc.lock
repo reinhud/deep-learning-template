@@ -20,6 +20,10 @@ stages:
     outs:
     - path: output/.dvclive
       hash: md5
-      md5: b118f70297f6fd307d7f08bcb779142f.dir
-      size: 131012
+      md5: 3e93c95c0347aead254e532f192e669b.dir
+      size: 106052
       nfiles: 27
+    - path: output/checkpoints/best_model.ckpt
+      hash: md5
+      md5: 997c868feb5a8003865285ebe708e1b8
+      size: 134318342
