@@ -2,3 +2,7 @@
     enabled = true
     config_dir = config
     config_name = train.yaml
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = /tmp/dvcstore
